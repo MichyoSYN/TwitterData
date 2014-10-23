@@ -8,4 +8,5 @@ urlpatterns = patterns('',
 
     url(r'^DataAnalyse', include('DataAnalyse.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    # url(r'^detail/', include(admin.site.urls)),
 )

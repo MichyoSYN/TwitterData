@@ -7,8 +7,8 @@
 <body>
 {% if latest_twits_list %}
     <ul>
-    {% for data in latest_twits_list %}
-        <li><a href="/polls/{{ id }}/">{{ Twitter.text_content }}</a></li>
+    {% for twit in latest_twits_list %}
+        <li><a href="/TwitterData/{{ twit.id }}/">{{ twit.text_content }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
