@@ -5,6 +5,7 @@
     <title></title>
 </head>
 <body>
-{{ twit }}
+<h1>{{ twit.text_content }}</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 </body>
 </html>

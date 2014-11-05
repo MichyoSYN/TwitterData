@@ -12,3 +12,4 @@ def index(request):
 def detail(request, id):
     twit = get_object_or_404(Twitter, pk = id)
     return render(request, 'DataAnalyse/detail.html', {'twit': twit})
+
