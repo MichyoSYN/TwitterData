@@ -10,3 +10,4 @@ EVENT_CHOICES = (
 
 class EventChoose(forms.Form):
     event_list = forms.ChoiceField(choices=EVENT_CHOICES)
+    event_keyword = forms.CharField()
