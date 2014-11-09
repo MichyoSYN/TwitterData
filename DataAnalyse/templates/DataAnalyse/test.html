@@ -6,17 +6,12 @@
 </head>
 <body>
 
-<form action=" " method="post">
-<select  name="a" >
-<option value="一上方">a</option>
-<option value="二五道">b</option>
-<option value="三天按">c</option>
-<option value="四撒大">d</option>
-<option value="五中的">e</option>
-<option value="六稳定">f</option>
-</select>
-<input type="submit" value="测试"/>
-</form>
+    <form action="." method="get">
+        <p>
+            {{ form.as_p }}
+        </p>
+        <input type="submit" value="Search">
+    </form>
 
 </body>
 </html>

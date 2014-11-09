@@ -4,9 +4,11 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 from DataAnalyse.models import Twitter
 from django.shortcuts import render_to_response
+from DataAnalyse.forms import EventChoose
 
 # Create your views here.
 
+'''
 def test(request):
     values = request.META.items()
     values.sort()
@@ -14,6 +16,7 @@ def test(request):
     for k, v in values:
         html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
     return HttpResponse('<table>%s</table>' % '\n'.join(html))
+'''
 
 class IndexView(generic.ListView):
     template_name = 'DataAnalyse/index.html'
@@ -27,3 +30,15 @@ class DetailView(generic.DetailView):
     model = Twitter
     template_name = 'DataAnalyse/detail.html'
     context_object_name =  'twit'
+
+def test(request):
+    if request.method=="GET":
+        event_form = EventChoose(request.GET)
+        if event_form.is_valid():
+            cd = event_form.cleaned_data
+            if cd["event_list"]:
+                message = 'You searched for: %r' % cd["event_list"]
+                return HttpResponse(message)
+        else:
+            event_form = EventChoose()
+    return render_to_response('DataAnalyse/test.html', {'event_form': event_form})
