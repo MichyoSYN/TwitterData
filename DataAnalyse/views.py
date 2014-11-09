@@ -26,16 +26,17 @@ class IndexView(generic.ListView):
         # Return the last five published questions.
         return Twitter.objects.order_by('-pub_date')[:5]
 
-    def event_choose(request):
+    def get(self, request, *args, **kwargs):
+        request = self.request
         if request.method == "GET":
             event_form = EventChoose(request.GET)
-        if event_form.is_valid():
-            cd = event_form.cleaned_data
-            if cd["event_list"]:
-                message = 'You searched for: %r' % cd["event_list"]
-                return HttpResponse(message)
-        else:
-            event_form = EventChoose()
+            if event_form.is_valid():
+                cd = event_form.cleaned_data
+                if cd["event_list"]:
+                    message = 'You searched for: %r' % cd["event_list"]
+                    return HttpResponse(message)
+            else:
+                event_form = EventChoose()
         return render_to_response('DataAnalyse/index.html', {'event_form': event_form})
 
 class DetailView(generic.DetailView):
