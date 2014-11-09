@@ -1,10 +1,34 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'DataAnalyse/style.css' %}" />
+
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>
+        Main View.
+    </title>
 </head>
 <body>
+
+<!-- Give a list for specifying the event. -->
+<form action="." method="post">
+    <select name="events" >
+        <option value="MH370"> MH370 </option>
+        <option value="Football Game"> Football Game </option>
+        <option value="Chile Earthquake"> Chile Earthquake </option>
+    </select>
+    <input type="submit" value="GO"/>
+</form>
+
+{% if event %}
+    <h1> Event: {{ event }} </h1>>
+{% else %}
+    <h1> Please choose event. </h1>
+{% endif %}
+
+<!-- Show the latest 5 item in database. -->
 {% if latest_twits_list %}
     <ul>
     {% for twit in latest_twits_list %}
@@ -12,7 +36,8 @@
     {% endfor %}
     </ul>
 {% else %}
-    <p>No data is available.</p>
+    <p> No data is available. </p>
 {% endif %}
+
 </body>
 </html>
