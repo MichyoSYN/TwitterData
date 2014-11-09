@@ -3,9 +3,9 @@ __author__ = 'Michyo'
 from django import forms
 
 EVENT_CHOICES = (
-    ('1', 'MH370'),
-    ('2', 'Earthquake'),
-    ('3', 'Football'),
+    ('MH370', 'MH370'),
+    ('earthquake', 'Chile Earthquake'),
+    ('football', 'Football Game'),
 )
 
 class EventChoose(forms.Form):

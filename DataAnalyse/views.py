@@ -22,25 +22,31 @@ class IndexView(generic.ListView):
     template_name = 'DataAnalyse/index.html'
     context_object_name = 'latest_twits_list'
 
-    # def get_queryset(self):
-    #     # Return the last five published questions.
-    #     return Twitter.objects.order_by('-pub_date')[:5]
+    '''
+    def get_queryset(self):
+        # Return the last five published questions.
+        return Twitter.objects.order_by('-pub_date')[:5]
+    '''
 
     def get(self, request, *args, **kwargs):
-        request = self.request
+        event = 'Please choose event.'
         if request.method == "GET":
             event_form = EventChoose(request.GET)
             if event_form.is_valid():
                 cd = event_form.cleaned_data
                 if cd["event_list"]:
-                    message = 'You searched for: %r' % cd["event_list"]
-                    return HttpResponse(message)
+                    # message = 'You searched for: %r' % cd["event_list"]
+                    event = cd["event_list"]
+                    # return HttpResponse(event)
             else:
                 event_form = EventChoose()
-
-        #modify by bx
         latest_twits_list = Twitter.objects.order_by('-pub_date')[:5]
-        return render_to_response('DataAnalyse/index.html', {'event_form': event_form, 'latest_twits_list' : latest_twits_list})
+        return render_to_response('DataAnalyse/index.html',
+                                  {
+                                      'event_form': event_form,
+                                      'latest_twits_list': latest_twits_list,
+                                      'event': event
+                                  })
 
 class DetailView(generic.DetailView):
     model = Twitter
