@@ -7,8 +7,8 @@ class TwitterAdmin(admin.ModelAdmin):
         (None, {'fields': ['text_content']}),
         ('Publish Date', {'fields': ['pub_date']})
     ]
-    list_display = ('text_content', 'pub_date', 'was_published_recently')
-    list_filter = ['pub_date']
-    search_fields = ['text_content']
+    list_display = ('pub_date', 'event', 'was_published_recently', 'text_content')
+    list_filter = ['pub_date', 'event']
+    search_fields = ['text_content', 'event']
 
 admin.site.register(Twitter, TwitterAdmin)
