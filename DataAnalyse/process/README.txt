@@ -1,0 +1,8 @@
+需要修改的参数：config.py文件中第11行，请将databasePath修改为你电脑中db.sqlite3文件的绝对路径
+
+只需要运行run_idf.py文件中的语句即可获得结果，结果将放在output文件夹中的json文件中，
+其中keywords文件存放每个peak time window的关键词，TwQuantity文件存放每个time window的tweet数量，用于绘图
+Google的那个API所需要的具体json格式我还不清楚，所以需要再修改
+
+run_idf.py的语句需要四个参数，分别是event，start，end，interval
+这四个参数需要根据当时查询的事件（mh370，epl，earthquake）更改，具体的数值我都已经写在了config文件里了

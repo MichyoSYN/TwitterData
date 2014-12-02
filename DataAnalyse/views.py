@@ -54,6 +54,7 @@ class DetailView(generic.DetailView):
     context_object_name = 'twit'
 
 def test(request):
+    '''
     if request.method == "GET":
         event_form = EventChoose(request.GET)
         if event_form.is_valid():
@@ -63,4 +64,5 @@ def test(request):
                 return HttpResponse(message)
         else:
             event_form = EventChoose()
-    return render_to_response('DataAnalyse/test.html', {'event_form': event_form})
+    return render_to_response('DataAnalyse/test.html', {'event_form': event_form})'''
+    return render_to_response('DataAnalyse/test.html')
