@@ -40,7 +40,8 @@ class IndexView(generic.ListView):
                     # return HttpResponse(event)
             else:
                 event_form = EventChoose()
-        latest_twits_list = Twitter.objects.order_by('-pub_date')[:5]
+        # ** Return the latest 5 tweets related with event. **
+        latest_twits_list = Twitter.objects.filter(event=event).order_by('-pub_date')[:5]
         return render_to_response('DataAnalyse/index.html',
                                   {
                                       'event_form': event_form,

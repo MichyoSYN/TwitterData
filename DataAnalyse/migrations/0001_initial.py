@@ -13,9 +13,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Twitter',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('pub_date', models.DateTimeField(verbose_name=b'date published')),
+                ('id', models.AutoField(serialize=False, primary_key=True)),
                 ('text_content', models.CharField(max_length=200)),
+                ('pub_date', models.DateTimeField(verbose_name=b'date published')),
+                ('event', models.CharField(default=b'test', max_length=50)),
             ],
             options={
             },
