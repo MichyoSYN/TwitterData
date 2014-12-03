@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.views import generic
 from DataAnalyse.models import Twitter
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from DataAnalyse.forms import EventChoose
 
 # Create your views here.
@@ -28,21 +28,20 @@ class IndexView(generic.ListView):
         return Twitter.objects.order_by('-pub_date')[:5]
     '''
 
-    def draw(self):
-        return HttpResponseRedirect('DataAnalyse/test.html')
-
     def get(self, request, *args, **kwargs):
         event = 'Please choose event.'
         if request.method == "GET":
             event_form = EventChoose(request.GET)
+            if request.GET.has_key("draw"):
+                return redirect('test/')
             if event_form.is_valid():
                 cd = event_form.cleaned_data
                 if cd["event_list"]:
                     # message = 'You searched for: %r' % cd["event_list"]
                     event = cd["event_list"]
                     # return HttpResponse(event)
-            else:
-                event_form = EventChoose()
+                else:
+                    event_form = EventChoose()
         # ** Return the latest 5 tweets related with event. **
         latest_twits_list = Twitter.objects.filter(event=event).order_by('-pub_date')[:5]
         return render_to_response('DataAnalyse/index.html',
