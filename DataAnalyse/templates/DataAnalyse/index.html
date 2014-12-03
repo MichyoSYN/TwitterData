@@ -1,44 +1,42 @@
-<!DOCTYPE html>
-
-{% load staticfiles %}
+<!DOCTYPE html> {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'DataAnalyse/style.css' %}" />
 
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title>
         Main View.
     </title>
 </head>
+
 <body>
 
-<!-- Give a list for specifying the event. -->
-<form action="." method="get">
-    <p>
+    <!-- Give a list for specifying the event. -->
+    <form class="inline-form" action="." method="get">
         {{ event_form.as_p }}
-    </p>
-    <input type="submit" value="Search">
-</form>
+        <input type="submit" value="Search">
+    </form>
 
-{% if event %}
-    <h1> Event: {{ event }} </h1>
-{% else %}
-    <h1> Please choose event. </h1>
-{% endif %}
+    <input id="draw" type="button" value="Draw">
 
-<input id="draw" type="button" value="Draw">
+    {% if event %}
+    <h1> Event: {{ event }} </h1> {% else %}
+    <h1> Please choose event. </h1> {% endif %}
 
-<!-- Show the latest 5 item in database. -->
-{% if latest_twits_list %}
+    <!-- Show the latest 5 item in database. -->
+    {% if latest_twits_list %}
     <ul>
-    {% for twit in latest_twits_list %}
-        <li><a href="{% url 'detail' twit.id %}">{{ twit.text_content }}</a></li>
-    {% endfor %}
+        {% for twit in latest_twits_list %}
+        <li><a href="{% url 'detail' twit.id %}">{{ twit.text_content }}</a>
+        </li>
+        {% endfor %}
     </ul>
-{% else %}
+    {% else %}
     <p> No data is available. </p>
-{% endif %}
-<p></p>
+    {% endif %}
+    <p></p>
 
 </body>
+
 </html>

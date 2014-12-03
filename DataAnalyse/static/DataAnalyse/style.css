@@ -5,3 +5,11 @@ li a {
 body {
     background: white url("images/background.jpg") no-repeat right bottom;
 }
+
+.inline-form {
+	display: inline-block;
+}
+
+.inline-form p {
+	display: inline-block;
+}
