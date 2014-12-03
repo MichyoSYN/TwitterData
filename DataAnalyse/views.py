@@ -28,6 +28,9 @@ class IndexView(generic.ListView):
         return Twitter.objects.order_by('-pub_date')[:5]
     '''
 
+    def draw(self):
+        return HttpResponseRedirect('DataAnalyse/test.html')
+
     def get(self, request, *args, **kwargs):
         event = 'Please choose event.'
         if request.method == "GET":

@@ -21,10 +21,12 @@
 </form>
 
 {% if event %}
-    <h1> Event: {{ event }} </h1>>
+    <h1> Event: {{ event }} </h1>
 {% else %}
     <h1> Please choose event. </h1>
 {% endif %}
+
+<input id="draw" type="button" value="Draw">
 
 <!-- Show the latest 5 item in database. -->
 {% if latest_twits_list %}
@@ -36,6 +38,7 @@
 {% else %}
     <p> No data is available. </p>
 {% endif %}
+<p></p>
 
 </body>
 </html>
