@@ -18,8 +18,13 @@
         {{ event_form.as_p }}
     </p>
     <input type="submit" value="Search" name="submit">
+    <input type="submit" value="Generate" name="generate">
     <input type="submit" value="Draw" name="draw">
 </form>
+
+{% if notice %}
+    <h1> {{ notice }} <h1>
+{% endif %}
 
 {% if event %}
     <h1> Event: {{ event }} </h1>

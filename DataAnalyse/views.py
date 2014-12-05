@@ -7,6 +7,9 @@ from django.shortcuts import render_to_response, redirect
 from DataAnalyse.forms import EventChoose
 import json
 import convert
+import run_idf
+import config
+from django.template import Context
 
 # Create your views here.
 
@@ -43,6 +46,8 @@ class IndexView(generic.ListView):
                     # message = 'You searched for: %r' % cd["event_list"]
                     event = cd["event_list"]
                     # return HttpResponse(event)
+                    if request.GET.has_key("generate"):
+                        run_algorithm(event)
                 else:
                     event_form = EventChoose()
         # ** Return the latest 5 tweets related with event. **
@@ -58,6 +63,14 @@ class DetailView(generic.DetailView):
     model = Twitter
     template_name = 'DataAnalyse/detail.html'
     context_object_name = 'twit'
+
+def run_algorithm(event):
+    if event == config.event_mh370:
+        run_idf.run(start=config.start_mh370, end=config.end_mh370, interval=config.interval_mh370, event=config.event_mh370)
+    elif event == config.event_earthquake:
+        run_idf.run(start=config.start_earthq, end=config.end_earthq, interval=config.interval_earthq, event=config.event_earthquake)
+    elif event == config.event_epl:
+        run_idf.run(start=config.start_epl, end=config.end_epl, interval=config.interval_epl, event=config.event_epl)
 
 def test(request):
     '''

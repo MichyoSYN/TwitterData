@@ -9,7 +9,7 @@ def run():
 
     print django_data
 
-    file_name = "/Users/Michyo/PycharmProjects/TwitterData/DataAnalyse/output/TwQuantity_MH370.json"
+    file_name = "/Users/Michyo/PycharmProjects/TwitterData/DataAnalyse/output/TwQuantity.json"
 
     with open(file_name) as f:
         for line in f:
