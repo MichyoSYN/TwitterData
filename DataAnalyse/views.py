@@ -5,6 +5,8 @@ from django.views import generic
 from DataAnalyse.models import Twitter
 from django.shortcuts import render_to_response, redirect
 from DataAnalyse.forms import EventChoose
+import json
+import convert
 
 # Create your views here.
 
@@ -33,7 +35,8 @@ class IndexView(generic.ListView):
         if request.method == "GET":
             event_form = EventChoose(request.GET)
             if request.GET.has_key("draw"):
-                return redirect('test/')
+                # return redirect('test/')
+                return test(request)
             if event_form.is_valid():
                 cd = event_form.cleaned_data
                 if cd["event_list"]:
@@ -68,4 +71,19 @@ def test(request):
         else:
             event_form = EventChoose()
     return render_to_response('DataAnalyse/test.html', {'event_form': event_form})'''
-    return render_to_response('DataAnalyse/test.html')
+    '''
+    array = [
+          ['Year', 'Sales'],
+          ['2004',  1000],
+          ['2005',  1170],
+          ['2006',  660],
+          ['2007',  1030]
+        ]
+    print array
+    '''
+    array = convert.run()
+
+    return render_to_response('DataAnalyse/test.html',
+                              {
+                                'array': json.dumps(array)
+                              })

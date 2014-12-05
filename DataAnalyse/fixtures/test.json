@@ -1,2 +1,13 @@
-[{"fields": {"text_content": "Wow you flunked out of coastal..you clearly were meant for school", "pub_date": "2014-03-31 15:57:55.000", "event": "earthquake"}, "model": "DataAnalyse.Twitter", "pk": 1},
-{"fields": {"text_content": "$CVX Chevron, Polish firm jointly explore for shale gas http://t.co/F78FRQA6cl", "pub_date": "2014-03-31 16:00:41.000", "event": "earthquake"}, "model": "DataAnalyse.Twitter", "pk": 2}]
+{
+  "cols": [
+        {"id":"","label":"Topping","pattern":"","type":"string"},
+        {"id":"","label":"Slices","pattern":"","type":"number"}
+      ],
+  "rows": [
+        {"c":[{"v":"Mushrooms","f":null},{"v":3,"f":null}]},
+        {"c":[{"v":"Onions","f":null},{"v":1,"f":null}]},
+        {"c":[{"v":"Olives","f":null},{"v":1,"f":null}]},
+        {"c":[{"v":"Zucchini","f":null},{"v":1,"f":null}]},
+        {"c":[{"v":"Pepperoni","f":null},{"v":2,"f":null}]}
+      ]
+}
